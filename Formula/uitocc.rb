@@ -2,7 +2,7 @@ class Uitocc < Formula
   desc "Screen context provider for Claude Code via MCP"
   homepage "https://github.com/moeki0/uitocc"
   url "https://github.com/moeki0/uitocc/archive/refs/tags/v0.4.0.tar.gz"
-  sha256 "d255d742894491313b85994c84866363e93756403209d18d0c9651eab65c7659"
+  sha256 "c248db60d50ae7f7765ab95dde2951bc2626c478ad2be059e9edf65fbd97c2de"
   license "MIT"
 
   depends_on :macos
@@ -13,13 +13,10 @@ class Uitocc < Formula
     system "bun", "build", "--compile", "cli.ts", "--outfile", "uitocc"
     system "swiftc", "ax_text.swift", "-o", "uitocc-ax-text", "-O"
     system "swiftc", "send.swift", "-o", "uitocc-send", "-O"
-    system "swiftc", "transcribe.swift", "-o", "uitocc-transcribe", "-O",
-           "-framework", "Speech"
-
     bin.install "uitocc"
     bin.install "uitocc-ax-text"
     bin.install "uitocc-send"
-    bin.install "uitocc-transcribe"
+    bin.install "transcribe.sh" => "uitocc-transcribe.sh"
   end
 
   def caveats
