@@ -1,8 +1,8 @@
 class Uitocc < Formula
   desc "Screen context provider for Claude Code via MCP"
   homepage "https://github.com/moeki0/uitocc"
-  url "https://github.com/moeki0/uitocc/archive/refs/tags/v0.1.1.tar.gz"
-  sha256 "53c6fec3d65a704d08cccc8d79ab39108fbe71922c71021ad3ed4a036a7493cc"
+  url "https://github.com/moeki0/uitocc/archive/refs/tags/v0.2.0.tar.gz"
+  sha256 "9b4cef5df8c2ba093475241a9f14caf66c10ae0d2adab7516f3a11e3477ab7e0"
   license "MIT"
 
   depends_on :macos
@@ -22,9 +22,6 @@ class Uitocc < Formula
   def caveats
     <<~EOS
       Grant Accessibility and Screen Recording permissions to your terminal app.
-
-      Start the daemon:
-        uitocc daemon
 
       Register the MCP server with Claude Code:
         claude mcp add -s user uitocc -- #{bin}/uitocc mcp
