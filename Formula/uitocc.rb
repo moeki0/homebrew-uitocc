@@ -7,19 +7,22 @@ class Uitocc < Formula
 
   resource "bun" do
     on_arm do
-      url "https://github.com/oven-sh/bun/releases/latest/download/bun-darwin-aarch64.zip"
+      url "https://github.com/oven-sh/bun/releases/download/bun-v1.3.13/bun-darwin-aarch64.zip"
+      sha256 "5467e3f65dba526b9fea98f0cce04efafc0c63e169733ec27b876a3ad32da190"
     end
     on_intel do
-      url "https://github.com/oven-sh/bun/releases/latest/download/bun-darwin-x64.zip"
+      url "https://github.com/oven-sh/bun/releases/download/bun-v1.3.13/bun-darwin-x64.zip"
+      sha256 :no_check
     end
   end
 
   def install
     resource("bun").stage do
-      buildpath.install Dir["bun-*/bun"].first => "bun"
+      bun_bin = Dir["bun-*/bun"].first || "bun"
+      buildpath.install bun_bin => "bun"
     end
     chmod 0755, buildpath/"bun"
-    bun = buildpath/"bun"
+    bun = (buildpath/"bun").to_s
 
     system bun, "install", "--frozen-lockfile"
     system bun, "build", "--compile", "cli.ts", "--outfile", "uitocc"
