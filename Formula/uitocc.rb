@@ -1,12 +1,12 @@
 class Uitocc < Formula
   desc "Screen context provider for Claude Code via MCP"
   homepage "https://github.com/moeki0/uitocc"
-  version "0.9.4"
+  version "0.9.5"
   license "MIT"
 
   on_arm do
-    url "https://github.com/moeki0/uitocc/releases/download/v0.9.4/uitocc-darwin-arm64.tar.gz"
-    sha256 "ea20085babcdc23437e8c3793f3294549f86478a6ddf0a8fcd23a5178929511b"
+    url "https://github.com/moeki0/uitocc/releases/download/v0.9.5/uitocc-darwin-arm64.tar.gz"
+    sha256 "f522f4827293353c483418a1553f7b4858429e5d9faeea3e37d75073fb758094"
   end
 
   def install
