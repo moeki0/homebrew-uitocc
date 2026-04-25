@@ -1,8 +1,8 @@
 class Tunr < Formula
   desc "Screen & audio context provider for Claude Code via MCP"
   homepage "https://github.com/moeki0/tunr"
-  url "https://github.com/moeki0/tunr/archive/refs/tags/v1.1.0.tar.gz"
-  sha256 "fb1eb64b2305eea709ffbe5abf18c80395a780b19984647ef881f4f23adff914"
+  url "https://github.com/moeki0/tunr/archive/refs/tags/v1.2.0.tar.gz"
+  sha256 "b8c12dff5c69135df8ec60e7edd79350621fffba87de7545d59a18f111f3e281"
   license "MIT"
 
   resource "bun" do
@@ -50,11 +50,11 @@ class Tunr < Formula
       Start Claude Code with channels enabled:
         claude --dangerously-load-development-channels server:tunr
 
-      Start the watch daemon to observe screen context:
-        tunr watch
+      Start the daemon:
+        tunr start
 
-      For Chrome web content capture, enable in Chrome:
-        View > Developer > Allow JavaScript from Apple Events
+      For Chrome web content capture:
+        defaults write com.google.Chrome AllowJavaScriptAppleEvents -bool true
 
       For audio capture, install BlackHole and set up a multi-output device:
         brew install --cask blackhole-2ch
