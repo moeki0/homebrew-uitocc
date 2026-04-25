@@ -4,8 +4,6 @@ class Uitocc < Formula
   version "0.9.1"
   license "MIT"
 
-  depends_on :macos
-
   on_arm do
     url "https://github.com/moeki0/uitocc/releases/download/v0.9.1/uitocc-darwin-arm64.tar.gz"
     sha256 "ec3eab253f19e574ff1ac8c8a9b32a822520078ebeeb44ae55feab8241b51fdb"
