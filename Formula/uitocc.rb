@@ -1,11 +1,9 @@
 class Uitocc < Formula
   desc "Screen context provider for Claude Code via MCP"
   homepage "https://github.com/moeki0/uitocc"
-  url "https://github.com/moeki0/uitocc/archive/refs/tags/v0.9.18.tar.gz"
-  sha256 "8322ebe1029d86fa4b3590e611bfcb191532dfc298838781736592c1b5d2da1d"
+  url "https://github.com/moeki0/uitocc/archive/refs/tags/v0.9.19.tar.gz"
+  sha256 "62a6d7ede01232662de540c199aada37624dcddcc3a370998717dfe2d38c6ded"
   license "MIT"
-
-  depends_on "whisper-cpp" => :recommended
 
   resource "bun" do
     on_arm do
@@ -56,9 +54,6 @@ class Uitocc < Formula
       For audio capture, install BlackHole and set up a multi-output device:
         brew install --cask blackhole-2ch
       Then configure a multi-output device in Audio MIDI Setup.
-
-      Download the whisper.cpp model:
-        curl -L -o ~/.cache/whisper-cpp-small.bin https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-small.bin
     EOS
   end
 
