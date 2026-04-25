@@ -1,9 +1,11 @@
 class Uitocc < Formula
   desc "Screen context provider for Claude Code via MCP"
   homepage "https://github.com/moeki0/uitocc"
-  url "https://github.com/moeki0/uitocc/archive/refs/tags/v0.9.8.tar.gz"
-  sha256 "0680bd7a1f12e08970d56b0b92c7b080c37632d29caf3d9832f7fa6e42c007a9"
+  url "https://github.com/moeki0/uitocc/archive/refs/tags/v0.9.9.tar.gz"
+  sha256 "27c40c020021f89db64dd38a3181094374a1144c9d8f7467a90c60657f6a53b6"
   license "MIT"
+
+  depends_on "whisper-cpp" => :recommended
 
   resource "bun" do
     on_arm do
@@ -29,10 +31,13 @@ class Uitocc < Formula
     system "swiftc", "ax_text.swift", "-o", "uitocc-ax-text", "-O"
     system "swiftc", "send.swift", "-o", "uitocc-send", "-O"
     system "swiftc", "embed.swift", "-o", "uitocc-embed", "-O"
+    system "swiftc", "audio_capture.swift", "-o", "uitocc-audio-capture", "-O",
+           "-framework", "AVFoundation", "-framework", "CoreAudio"
     bin.install "uitocc"
     bin.install "uitocc-ax-text"
     bin.install "uitocc-send"
     bin.install "uitocc-embed"
+    bin.install "uitocc-audio-capture"
   end
 
   def caveats
@@ -47,6 +52,13 @@ class Uitocc < Formula
 
       Start the watch daemon to observe screen context:
         uitocc watch
+
+      For audio capture, install BlackHole and set up a multi-output device:
+        brew install --cask blackhole-2ch
+      Then configure a multi-output device in Audio MIDI Setup.
+
+      Download the whisper.cpp model:
+        curl -L -o ~/.cache/whisper-cpp-small.bin https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-small.bin
     EOS
   end
 
