@@ -8,7 +8,7 @@ class Tunr < Formula
   resource "bun" do
     on_arm do
       url "https://github.com/oven-sh/bun/releases/download/bun-v1.3.13/bun-darwin-aarch64.zip"
-      sha256 "b0fa7f4f81e2c5cd6c1adcc6d60430217d2764b58e372c945f3ba3b9b07a85eb"
+      sha256 "5467e3f65dba526b9fea98f0cce04efafc0c63e169733ec27b876a3ad32da190"
     end
     on_intel do
       url "https://github.com/oven-sh/bun/releases/download/bun-v1.3.13/bun-darwin-x64.zip"
