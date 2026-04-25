@@ -1,8 +1,8 @@
 class Tunr < Formula
   desc "Screen & audio context provider for Claude Code via MCP"
   homepage "https://github.com/moeki0/tunr"
-  url "https://github.com/moeki0/tunr/archive/refs/tags/v1.2.7.tar.gz"
-  sha256 "512d39331c35048c317b286ce4f5bcf17b7e5190813acd538a4cf3186c35142f"
+  url "https://github.com/moeki0/tunr/archive/refs/tags/v1.2.8.tar.gz"
+  sha256 "34edc1697cb71e569c15f6a9fa248fba03f8adde36431cd52f7aa2edff1b43c6"
   license "MIT"
 
   resource "bun" do
@@ -25,13 +25,13 @@ class Tunr < Formula
     bun = (buildpath/"bun").to_s
 
     system bun, "install", "--frozen-lockfile"
-    system bun, "build", "--compile", "cli.ts", "--outfile", "tunr"
-    system "swiftc", "ax_text.swift", "-o", "tunr-ax-text", "-O"
-    system "swiftc", "send.swift", "-o", "tunr-send", "-O"
-    system "swiftc", "embed.swift", "-o", "tunr-embed", "-O"
-    system "swiftc", "audio_capture.swift", "-o", "tunr-audio-capture", "-O",
+    system bun, "build", "--compile", "src/cli.ts", "--outfile", "tunr"
+    system "swiftc", "swift/ax_text.swift", "-o", "tunr-ax-text", "-O"
+    system "swiftc", "swift/send.swift", "-o", "tunr-send", "-O"
+    system "swiftc", "swift/embed.swift", "-o", "tunr-embed", "-O"
+    system "swiftc", "swift/audio_capture.swift", "-o", "tunr-audio-capture", "-O",
            "-framework", "AVFoundation", "-framework", "CoreAudio"
-    system "swiftc", "event_monitor.swift", "-o", "tunr-event-monitor", "-O"
+    system "swiftc", "swift/event_monitor.swift", "-o", "tunr-event-monitor", "-O"
     bin.install "tunr"
     bin.install "tunr-ax-text"
     bin.install "tunr-send"
