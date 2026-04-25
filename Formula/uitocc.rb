@@ -1,8 +1,8 @@
 class Uitocc < Formula
   desc "Screen context provider for Claude Code via MCP"
   homepage "https://github.com/moeki0/uitocc"
-  url "https://github.com/moeki0/uitocc/archive/refs/tags/v0.9.9.tar.gz"
-  sha256 "27c40c020021f89db64dd38a3181094374a1144c9d8f7467a90c60657f6a53b6"
+  url "https://github.com/moeki0/uitocc/archive/refs/tags/v0.9.10.tar.gz"
+  sha256 "8a1f78882ee85aaa4ee5fd4ba50e24766e19d86b1629c2d09aab945551711824"
   license "MIT"
 
   depends_on "whisper-cpp" => :recommended
