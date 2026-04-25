@@ -1,8 +1,8 @@
 class Uitocc < Formula
   desc "Screen context provider for Claude Code via MCP"
   homepage "https://github.com/moeki0/uitocc"
-  url "https://github.com/moeki0/uitocc/archive/refs/tags/v0.9.28.tar.gz"
-  sha256 "aa2a492ed3f1ba64ed97b91afa4052cc056b30035b8f65fa17f616568ae23d03"
+  url "https://github.com/moeki0/uitocc/archive/refs/tags/v0.9.31.tar.gz"
+  sha256 "503b54e6d6b9526ad3126d30867d84d78a3d7b8424121dbbc434ef361362ae63"
   license "MIT"
 
   resource "bun" do
@@ -32,12 +32,14 @@ class Uitocc < Formula
     system "swiftc", "audio_capture.swift", "-o", "uitocc-audio-capture", "-O",
            "-framework", "AVFoundation", "-framework", "CoreAudio"
     system "swiftc", "image_diff.swift", "-o", "uitocc-image-diff", "-O"
+    system "swiftc", "event_monitor.swift", "-o", "uitocc-event-monitor", "-O"
     bin.install "uitocc"
     bin.install "uitocc-ax-text"
     bin.install "uitocc-send"
     bin.install "uitocc-embed"
     bin.install "uitocc-audio-capture"
     bin.install "uitocc-image-diff"
+    bin.install "uitocc-event-monitor"
   end
 
   def caveats
