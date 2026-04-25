@@ -1,8 +1,8 @@
 class Uitocc < Formula
   desc "Screen context provider for Claude Code via MCP"
   homepage "https://github.com/moeki0/uitocc"
-  url "https://github.com/moeki0/uitocc/archive/refs/tags/v0.5.0.tar.gz"
-  sha256 "60a941e8492a0b7bdf65205baef4c17ab5757f083a562529a832793c188b8f46"
+  url "https://github.com/moeki0/uitocc/archive/refs/tags/v0.6.0.tar.gz"
+  sha256 "48bbfef868ae8f908692882c4cb2ecac07dc80a04870f71ce0f9cfde60a79710"
   license "MIT"
 
   depends_on :macos
@@ -16,7 +16,6 @@ class Uitocc < Formula
     bin.install "uitocc"
     bin.install "uitocc-ax-text"
     bin.install "uitocc-send"
-    bin.install "transcribe.sh" => "uitocc-transcribe.sh"
   end
 
   def caveats
@@ -28,10 +27,6 @@ class Uitocc < Formula
 
       Enable channels in ~/.claude/settings.json:
         { "experimentalFeatures": { "channels": true } }
-
-      For audio capture, install BlackHole and ffmpeg:
-        brew install blackhole-2ch ffmpeg
-      Then start the audio daemon: uitocc audio
     EOS
   end
 
