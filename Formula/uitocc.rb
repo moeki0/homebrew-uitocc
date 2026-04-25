@@ -1,15 +1,18 @@
 class Uitocc < Formula
   desc "Screen context provider for Claude Code via MCP"
   homepage "https://github.com/moeki0/uitocc"
-  version "0.9.6"
+  url "https://github.com/moeki0/uitocc/archive/refs/tags/v0.9.6.tar.gz"
+  sha256 "b6a89626e92fc6c48efa8cd9c1d563e7fbeed68ac18c5bff7a334eb7af7c9ab0"
   license "MIT"
 
-  on_arm do
-    url "https://github.com/moeki0/uitocc/releases/download/v0.9.6/uitocc-darwin-arm64.tar.gz"
-    sha256 "fb5a6aeb89d8c2132f5fc1f2f1e2b3f70f2db1e5f30213a123fb2b49e0df208c"
-  end
+  depends_on "oven-sh/bun/bun" => :build
 
   def install
+    system "bun", "install", "--frozen-lockfile"
+    system "bun", "build", "--compile", "cli.ts", "--outfile", "uitocc"
+    system "swiftc", "ax_text.swift", "-o", "uitocc-ax-text", "-O"
+    system "swiftc", "send.swift", "-o", "uitocc-send", "-O"
+    system "swiftc", "embed.swift", "-o", "uitocc-embed", "-O"
     bin.install "uitocc"
     bin.install "uitocc-ax-text"
     bin.install "uitocc-send"
