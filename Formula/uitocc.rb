@@ -5,11 +5,24 @@ class Uitocc < Formula
   sha256 "b6a89626e92fc6c48efa8cd9c1d563e7fbeed68ac18c5bff7a334eb7af7c9ab0"
   license "MIT"
 
-  depends_on "oven-sh/bun/bun" => :build
+  resource "bun" do
+    on_arm do
+      url "https://github.com/oven-sh/bun/releases/latest/download/bun-darwin-aarch64.zip"
+    end
+    on_intel do
+      url "https://github.com/oven-sh/bun/releases/latest/download/bun-darwin-x64.zip"
+    end
+  end
 
   def install
-    system "bun", "install", "--frozen-lockfile"
-    system "bun", "build", "--compile", "cli.ts", "--outfile", "uitocc"
+    resource("bun").stage do
+      buildpath.install Dir["bun-*/bun"].first => "bun"
+    end
+    chmod 0755, buildpath/"bun"
+    bun = buildpath/"bun"
+
+    system bun, "install", "--frozen-lockfile"
+    system bun, "build", "--compile", "cli.ts", "--outfile", "uitocc"
     system "swiftc", "ax_text.swift", "-o", "uitocc-ax-text", "-O"
     system "swiftc", "send.swift", "-o", "uitocc-send", "-O"
     system "swiftc", "embed.swift", "-o", "uitocc-embed", "-O"
