@@ -6,7 +6,7 @@ class Uitocc < Formula
   license "MIT"
 
   depends_on :macos
-  depends_on "bun" => :build
+  depends_on "oven-sh/bun/bun" => :build
 
   def install
     system "bun", "install"
