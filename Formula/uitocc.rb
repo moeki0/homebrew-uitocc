@@ -1,19 +1,17 @@
 class Uitocc < Formula
   desc "Screen context provider for Claude Code via MCP"
   homepage "https://github.com/moeki0/uitocc"
-  url "https://github.com/moeki0/uitocc/archive/refs/tags/v0.9.0.tar.gz"
-  sha256 "cca3cce0068c95be6141bf7085b3ed064715c36a9d2f7d7384d80559ff8acb0b"
+  version "0.9.1"
   license "MIT"
 
   depends_on :macos
-  depends_on "oven-sh/bun/bun" => :build
+
+  on_arm do
+    url "https://github.com/moeki0/uitocc/releases/download/v0.9.1/uitocc-darwin-arm64.tar.gz"
+    sha256 "ec3eab253f19e574ff1ac8c8a9b32a822520078ebeeb44ae55feab8241b51fdb"
+  end
 
   def install
-    system "bun", "install"
-    system "bun", "build", "--compile", "cli.ts", "--outfile", "uitocc"
-    system "swiftc", "ax_text.swift", "-o", "uitocc-ax-text", "-O"
-    system "swiftc", "send.swift", "-o", "uitocc-send", "-O"
-    system "swiftc", "embed.swift", "-o", "uitocc-embed", "-O"
     bin.install "uitocc"
     bin.install "uitocc-ax-text"
     bin.install "uitocc-send"
@@ -27,8 +25,8 @@ class Uitocc < Formula
       Register the MCP server with Claude Code:
         claude mcp add -s user uitocc -- #{bin}/uitocc mcp
 
-      Enable channels in ~/.claude/settings.json:
-        { "experimentalFeatures": { "channels": true } }
+      Start Claude Code with channels enabled:
+        claude --dangerously-load-development-channels server:uitocc
 
       Start the watch daemon to observe screen context:
         uitocc watch
