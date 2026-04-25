@@ -1,8 +1,8 @@
 class Uitocc < Formula
   desc "Screen context provider for Claude Code via MCP"
   homepage "https://github.com/moeki0/uitocc"
-  url "https://github.com/moeki0/uitocc/archive/refs/tags/v0.6.0.tar.gz"
-  sha256 "48bbfef868ae8f908692882c4cb2ecac07dc80a04870f71ce0f9cfde60a79710"
+  url "https://github.com/moeki0/uitocc/archive/refs/tags/v0.7.0.tar.gz"
+  sha256 "9dbf9faec861fadc620f236bf72882b05904ac309be8498f1cab05abed065974"
   license "MIT"
 
   depends_on :macos
@@ -27,6 +27,9 @@ class Uitocc < Formula
 
       Enable channels in ~/.claude/settings.json:
         { "experimentalFeatures": { "channels": true } }
+
+      Start the watch daemon to observe screen context:
+        uitocc watch
     EOS
   end
 
