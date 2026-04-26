@@ -1,8 +1,8 @@
 class Tunr < Formula
   desc "Screen & audio context provider for Claude Code via MCP"
   homepage "https://github.com/moeki0/tunr"
-  url "https://github.com/moeki0/tunr/archive/refs/tags/v1.9.0.tar.gz"
-  sha256 "20414ef9f1fc0bc50748f49dfa79ee53b9b79dcb35c785ef07a49df4bf240d11"
+  url "https://github.com/moeki0/tunr/archive/refs/tags/v1.9.1.tar.gz"
+  sha256 "12806148288cfe418c21f67e06c7fd2e6601469780ae36b63fcc5127600f7df5"
   license "MIT"
 
   resource "bun" do
